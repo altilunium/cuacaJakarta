@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CuacaJakarta</title>
+  <link rel="icon" href="https://storage.googleapis.com/wikibase-cloud-static/sites/530e38a80de265137fa0959f83556801/logos/64.ico?u=1709193904">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    .leaflet-image-layer {
+  opacity: 0.7;
+}
+
+#map {
+  position: absolute;
+  width:100%;
+  height: 100%;
+  top:0px;
+  left:0px;
+
+}
+  </style>
+
+
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    
+
+var map = L.map('map').setView([-6.1170,106.8311], 10);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: 'Data cuaca dari <a href="https://www.bmkg.go.id/satelit/satelit.bmkg?Sat=3&id=22"> BMKG Himawari-9 Rainfall Potential</a> | Data peta dari kontributor <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+}).addTo(map);
+
+var imageUrl = 'https://inderaja.bmkg.go.id/IMAGE/HIMA/H08_RP_Jakarta.png?' + escape(new Date());
+var imageBounds = [[-6.7989,106.3016], [-5.7026,107.3978]];
+
+L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+
+  </script>
+</body>
+</html>
